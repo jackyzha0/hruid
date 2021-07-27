@@ -2,7 +2,11 @@
   "name": "hruid",
   "version": "1.0.0",
   "description": "human-readable unique ids to and from hex keys",
-  "main": "gen.js",
+  "main": "index.js",
+  "files": [
+    "words.js",
+    "index.js"
+  ],
   "author": "jackyzha0 <j.zhao2k19@gmail.com>",
   "license": "MIT"
 }

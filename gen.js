@@ -1,5 +1,5 @@
 const { readFileSync, writeFileSync } = require("fs");
-const read = (name) => readFileSync(name + ".txt", "utf8").split("\n");
+const read = (name) => readFileSync("wordlists/" + name + ".txt", "utf8").split("\n");
 
 // Durstenfeld shuffle
 function shuffle(array) {
@@ -12,15 +12,14 @@ function shuffle(array) {
   return array
 }
 
-const nounDeclarations = JSON.stringify(shuffle(read('nouns')))
-const adjDeclaration = JSON.stringify(shuffle(read('adjectives')))
+const declarations = ['nouns', 'adjectives'].reduce((res, cur) => {
+  res[cur] = shuffle(read(cur))
+  return res
+}, {})
 
 const file = `// This file is generated using gen.js
 // wordlists from https://github.com/taikuukaits/SimpleWordlists
-module.exports = {
- nouns: ${nounDeclarations},
- adjectives: ${adjDeclaration}
-}
+module.exports = ${JSON.stringify(declarations)}
 `
 
 writeFileSync("words.js", file)

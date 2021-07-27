@@ -5,6 +5,9 @@ const {nouns, adjectives} = require('./words')
 // Address space of 1010*2876*9999 = 29,044,695,240 > 2^32
 const fromKey = (key) => {
   let n = parseInt(key, 16)
+  if (n > (1010*2876*9999)) {
+    throw "Key too large!"
+  }
   const adjI = Math.floor(n / (nouns.length * 10000))
   n -= (adjI * (nouns.length * 10000))
   const nounI = Math.floor(n / (10000))

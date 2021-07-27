@@ -1,6 +1,6 @@
 {
   "name": "hruid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "human-readable unique ids to and from hex keys",
   "main": "index.js",
   "files": [
